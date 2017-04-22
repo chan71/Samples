@@ -19,3 +19,44 @@ Notes:
 Script should be executable.
 $ chmod 700 replaceTokens.sh
 
+Example:
+/var/tmp/input/index.html:
+<html>
+<head>
+  <title>[[title]]</title>
+</head>
+<body>
+  Hi! You are in the [[environment]] environment!
+</body>
+</html>
+
+/var/tmp/conf/test.properties:
+title=You are in the test environment!
+environment=Testing
+
+/var/tmp/conf/prod.properties:
+title=Welcome
+environment=Production
+
+Suppose you are in the directory /var/tmp/scripts/
+Running ./replaceTokens.sh ../input/index.html ../conf/test.properties ../output/index.html 
+will give you /var/tmp/output/index.html:
+<html>
+<head>
+  <title>You are in the test environment!</title>
+</head>
+<body>
+  Hi! You are in the Testing environment!
+</body>
+</html>
+
+Running ./replaceTokens.sh ../input/index.html ../conf/prod.properties ../output/index.html 
+will give you /var/tmp/output/index.html:
+<html>
+<head>
+  <title>Welcome</title>
+</head>
+<body>
+  Hi! You are in the Production environment!
+</body>
+</html>
