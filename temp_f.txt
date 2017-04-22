@@ -1,0 +1,2 @@
+s/\[\[title\]\]/You are in the test environment!/
+s/\[\[environment\]\]/Testing/
